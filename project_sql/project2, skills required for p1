@@ -1,0 +1,55 @@
+/*
+this query is a continuation of the previous query, it will return
+the top 10 paying remot jobs for Data Analysts .
+and return the skills required for those jobs.
+!!for th core results findings of the execution of this query, 
+you can find them blew the code.!!
+*/
+
+with top_paying AS( SELECT 
+    *
+FROM
+    job_postings_fact
+left join
+    company_dim on job_postings_fact.company_id = company_dim.company_id
+where 
+    job_title_short='Data Analyst' AND
+    salary_year_avg IS NOT NULL AND 
+    job_location='Anywhere'
+order by 
+    salary_year_avg DESC
+limit 10)
+
+SELECT 
+    top_paying.job_id,
+    job_title_short,
+    salary_year_avg,
+    name as company_name,
+    skills as skill_name
+FROM top_paying
+INNER JOIN skills_job_dim ON top_paying.job_id=skills_job_dim.job_id
+INNER JOIN skills_dim ON skills_job_dim.skill_id=skills_dim.skill_id
+order by 
+    salary_year_avg DESC
+
+/*
+core results findings of the execution of this query:
+
+1.THE BIG FINDINGS:
+There is a very strong core skill hierarchy:
+SQL → Python → Tableau → R → Excel/Pandas/Snowflake
+SQL is essentially a universal requirement in this sample.
+Python is nearly universal as well.
+That means if someone wants to maximize employability for these Data Analyst roles,
+ the first priority should be:
+SQL + Python + Tableau
+rather than trying to learn all 28 skills.
+
+2.Domain dominance:
+The market represented by this dataset is not looking for a narrow "Excel analyst."
+It's looking for a hybrid Data Analyst who can work across:
+Data querying → programming → visualization → data platforms
+The dominant combination is therefore:
+Analytics + Programming + BI + Cloud
+rather than purely business/reporting skills.
+
