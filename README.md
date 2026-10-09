@@ -1,6 +1,6 @@
 # Introduction
 Diving into data jobs market , this project cover :
-the top paying jobs💵, in demand skills🔥, and where high demand skills meet the high paying skills 📈
+the top paying jobs💵, in demand skills🔥, and where high demand skills meet the high paying skills 📈  
 📌 SQL project queries you can check them here: [project_sql folder](/project_sql/).
 # Background
 This project is an SQL course parctice idea, thanks to Mr Luke Barousse the course owner you can get to the course via the following link:
