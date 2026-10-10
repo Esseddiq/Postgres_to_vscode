@@ -1,7 +1,6 @@
 /* in this project we've used to ways to get the top 5
 skills most required skills for Data Analyst jobs
 that are remote based on the skills counting,
-/*
 
 --WAY 1: using CTE to get the top 5 skills 
 WITH skills_counting AS( SELECT 

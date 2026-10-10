@@ -6,6 +6,8 @@ and return the skills required for those jobs.
 you can find them blew the code.!!
 */
 
+
+
 with top_paying AS( SELECT 
     *
 FROM
@@ -19,8 +21,7 @@ where
 order by 
     salary_year_avg DESC
 limit 10)
-
-SELECT 
+SELECT
     top_paying.job_id,
     job_title_short,
     salary_year_avg,
@@ -30,8 +31,7 @@ FROM top_paying
 INNER JOIN skills_job_dim ON top_paying.job_id=skills_job_dim.job_id
 INNER JOIN skills_dim ON skills_job_dim.skill_id=skills_dim.skill_id
 order by 
-    salary_year_avg DESC
-
+    salary_year_avg DESC;
 /*
 core results findings of the execution of this query:
 
@@ -52,4 +52,4 @@ Data querying → programming → visualization → data platforms
 The dominant combination is therefore:
 Analytics + Programming + BI + Cloud
 rather than purely business/reporting skills.
-
+*/
