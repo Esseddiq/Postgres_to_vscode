@@ -59,7 +59,7 @@ LIMIT 25;
 
 --anther way to get the same result's using a single query:
 
-SELECT 
+SELECT distinct
     --skills_job_dim.skill_id,
     skills as skill_name,
     COUNT(skills_job_dim.job_id) as skill_count,
@@ -80,4 +80,5 @@ group by
 HAVING COUNT(skills_job_dim.job_id) > 10
 order by 
     skill_avg DESC,
-    skill_count DESC;
+    skill_count DESC
+limit 25;

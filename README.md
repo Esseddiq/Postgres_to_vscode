@@ -180,12 +180,12 @@ From the table above it's highly recommanded for a Data Analyst role applicant t
 giving the proirity to rank order  
 with the possiblity to learn only **TABLEAU** or **POWER BI** as they mostly serve to do the same tools. 
    
-### 4. The Top skills For Data Analyst Jobs: 
+### 4. The Top Pying skills For Data Analyst Jobs: 
 this query  will return the top 25 skills that have 
 the better paying chances for data analyst jobs.  
 returning the skill name and ordering the results by the skill average salary using inteer joining of skills_job_dim table with job_posting_fact table then with skills_dim table.  
 setting data analyst roles, remote jobs, and ignoring the salary average null values as the query conditions.  
- 
+
 
   
 ```sql
@@ -210,7 +210,116 @@ order by
     avg_salary DESC
 limit 25;  
 ```
+#### Insights And Analysis:
+the following chart is the query execution result visualisation can better show case those 25 top paying skills for **Data Analys** roles:  
+
+![chart image](/01_top_25_highest_paying_skills.png)  
   
+*Source: CHATGPT*  
+##### Key Insights From The Chart:    
++ Specialist skills can be associated with more technical roles. PySpark, Databricks, Kubernetes, and similar technologies may appear in roles involving distributed computing, infrastructure, or complex data pipelines. Those roles can have different salary profiles from general analytics roles.
+- For an intry level skill **Data Analyst** role it's highly recommended to go first with the most five demanded skills **(SQL,EXCEL,PYTHON,TABLEAU,POWER BI)** then when we want to swift gears into more paying roles we can follow with the 25 highly paying skills.  
+  
+### 5. The Optimal Set Of Skills (High Demand And Pay).  
+this query project will be a continuation of the query 3 and 4 
+it's going to return the 25 optimal skills to learn , the gighly demanded and highly payed skills.  
+by inner joining skills_job_dim table with job_posting_fact table  then with the skills_dim table using some Aggragation functions as the *COUNT(skills)* to count the skill demand and the *AVG(salary)* to determine the skill pay.  
+setting data analyst roles, remote jobs, and ignoring the salary average null values as the query conditions. ordering the results by the skill salary and only taking the skills that thier count is biggar than 10. using tow solutions ways giving the same result.  
+  
+**WAY1: Using the 3th query(the highly demanded skills) and the 4th query(the highly paying skills) as tow different CTE's:**
+  
+```SQL
+WITH most_demand AS (SELECT 
+    skills as skill_name,
+    COUNT(skills_job_dim.job_id) as skill_count
+FROM 
+    skills_job_dim
+INNER JOIN 
+    job_postings_fact ON
+    job_postings_fact.job_id=skills_job_dim.job_id
+INNER JOIN 
+    skills_dim ON 
+    skills_job_dim.skill_id=skills_dim.skill_id
+WHERE 
+    job_title_short='Data Analyst' AND
+    job_work_from_home=TRUE AND
+    salary_year_avg IS NOT NULL
+group by 
+    skills
+), high_pay AS (SELECT 
+    skills as skill_name,
+    round(AVG(salary_year_avg),0) as avg_salary
+FROM 
+    skills_job_dim
+INNER JOIN 
+    job_postings_fact ON
+    job_postings_fact.job_id=skills_job_dim.job_id
+INNER JOIN 
+    skills_dim ON 
+    skills_job_dim.skill_id=skills_dim.skill_id
+WHERE 
+    job_title_short='Data Analyst' AND
+    job_work_from_home=TRUE AND
+    salary_year_avg IS NOT NULL
+group by 
+    skills
+
+)
+
+SELECT 
+    most_demand.skill_name,
+    skill_count,
+    avg_salary
+FROM
+    most_demand
+INNER JOIN high_pay 
+ON most_demand.skill_name=high_pay.skill_name
+WHERE
+    skill_count > 10
+order by 
+    avg_salary DESC,
+    skill_count DESC
+LIMIT 25;
+```  
+  
+**WAY 2: Using one simple query:**  
+  
+```sql
+SELECT 
+    --skills_job_dim.skill_id,
+    skills as skill_name,
+    COUNT(skills_job_dim.job_id) as skill_count,
+    round(AVG(salary_year_avg),0) as skill_avg
+FROM 
+    skills_job_dim
+INNER JOIN job_postings_fact 
+ON   job_postings_fact.job_id=skills_job_dim.job_id  
+INNER JOIN skills_dim
+ON  skills_dim.skill_id=skills_job_dim.skill_id
+WHERE 
+    job_title_short='Data Analyst' AND
+    job_work_from_home=TRUE AND
+    salary_year_avg IS NOT NULL 
+group by 
+    skills_job_dim.skill_id,
+    skills
+HAVING COUNT(skills_job_dim.job_id) > 10
+order by 
+    skill_avg DESC,
+    skill_count DESC;
+```  
+#### Insights And Analysis:  
+The scatter chart image below is a visualisation discription of the queries execution result:  
+  
+![scatter chart](/help%20book%20queries/skill%20demand%20and%20pay%20chart.png)
+*NOOTE: I've made this results visualisation using Power Query and Excel built charts*  
+  
+**CHART INTERPRETATION:**
+
+- From the **query 3 (5 highly demanded skills)** list Three of the five most demanded skills appear in the **25 highly demanded and payed skills** list, and they're **Python, Tableau And Power BI** while *SQL and Excel* do not.
+That doesn't mean SQL and Excel are poorly paid in general. It means they did not qualify for this particular salary ranking.  
+- From the **query 4 (25 highly payed skills)** list, no skill is mentioned in the **25 highly demanded and payed skills** This does not mean the highest-paying skills are not in demand. It means they did not qualify for my particular optimal set based on the SQL condition where the **count of skills must be graeter than 10** 
+
 
 
 

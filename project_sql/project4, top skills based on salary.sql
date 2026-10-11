@@ -5,6 +5,7 @@ the better paying chancces for data analyst jobs
 
 SELECT 
     skills as skill_name,
+    COUNT(skills_job_dim.job_id) as skill_count,
     round(AVG(salary_year_avg),0) as avg_salary
 FROM 
     skills_job_dim
