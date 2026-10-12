@@ -311,7 +311,8 @@ order by
 #### Insights And Analysis:  
 The scatter chart image below is a visualisation discription of the queries execution result:  
   
-![scatter chart](/help%20book%20queries/skill%20demand%20and%20pay%20chart.png)
+![scatter chart](/help%20book%20queries/skill%20demand%20and%20pay%20chart.png)  
+
 *NOOTE: I've made this results visualisation using Power Query and Excel built charts*  
   
 **CHART INTERPRETATION:**
