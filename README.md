@@ -3,7 +3,7 @@ Diving into data jobs market , this project cover :
 the top paying jobs💵, in demand skills🔥, and where high demand skills meet the high paying skills 📈  
 📌 SQL project queries you can check them here: [project_sql folder](/project_sql/).
 # Background
-This project is an SQL course parctice idea, thanks to Mr Luke Barousse the course owner you can get to the course via the following link:
+This project is an SQL course parctice idea I added on it some modiffications, thanks to Mr Luke Barousse the course owner you can get to the course via the following link:
 [Luke Barousse SQL Course](https://lukebarousse.com/sql).    
 #### Mr Barousse in this project course trays to answer the following questions problems 🔐  
 NOOTE ✏️: the role we focus on in this project is **Data Analyst**  
@@ -19,6 +19,8 @@ To tackle this project and go deep into I've benifit from the use of  many tools
 - **Postgres** the chosen database management system open source and ideal for ou project handling.
 - **Visual Studio Code** as the bridge to executing the sql queries on the postgres database.  
 - **Git & Github** the version control tools, ideal for sharing the project insight and analysis with tracking the changes and collaboration with others.  
+- **Excel Charts & Power Query** they help clean and visualise some findings as charts.  
+- **ChatGPT** this AI module helped to analyse some of the SQL queries execution results.
 # The Analysis 
 Each query in this project is a practical solution to a question from the 5 question we've asked in the **Background** section related to the data analysis job market, here's how I've handeled them:  
 ### 1. The Top Paying Data Analyst Jobs:  
@@ -319,7 +321,21 @@ The scatter chart image below is a visualisation discription of the queries exec
 
 - From the **query 3 (5 highly demanded skills)** list Three of the five most demanded skills appear in the **25 highly demanded and payed skills** list, and they're **Python, Tableau And Power BI** while *SQL and Excel* do not.
 That doesn't mean SQL and Excel are poorly paid in general. It means they did not qualify for this particular salary ranking.  
-- From the **query 4 (25 highly payed skills)** list, no skill is mentioned in the **25 highly demanded and payed skills** This does not mean the highest-paying skills are not in demand. It means they did not qualify for my particular optimal set based on the SQL condition where the **count of skills must be graeter than 10** 
+- From the **query 4 (25 highly payed skills)** list, no skill is mentioned in the **25 highly demanded and payed skills** This does not mean the highest-paying skills are not in demand. It means they did not qualify for my particular optimal set based on the SQL condition where the **count of skills must be graeter than 10.**   
+  
+# What I Learned:
+Through out this course projct jureney I had the chance to solve many real world data jobs questions problems,
+it helped me learn:
+- **How to constract comlex queries** using CTE's and tables joining it allow me pull specified useful data accross diffrent tables.
+- **Data Aggregation** using GROUP BY to aggregate by unique values adding some of the aggregation functions like COUNT() and AVG() to do some mathimatical and stastical calculations.  
+- **Analitical Skills Building** turining my reald world data questions into practical SQL queries to pull fruithfull results and use some other tools to better read them.   
+- **Code Edditing & Collaboration Tools** using GIT, GITHUB and VS Code help to handle some basic Git commands to better build a solide reppo inside my Github. 
+  
+# Conclusions
+Finally for me what matter most in this project reppo is not the findings results, but instead the learning processus, this was my first SQL project and my first github README showcasing.  
+and after all I can say that now I am ready to dive more into more real world problems, combining what I leaened here with other tools, continuanig my data analysis juerney.
+
+
 
 
 
