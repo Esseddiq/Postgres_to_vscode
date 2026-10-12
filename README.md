@@ -1,20 +1,20 @@
 # Introduction
-Diving into data jobs market , this project cover :
+Diving into the data jobs market, this project covers:
 the top paying jobs💵, in demand skills🔥, and where high demand skills meet the high paying skills 📈  
 📌 SQL project queries you can check them here: [project_sql folder](/project_sql/).
 # Background
-This project is an SQL course parctice idea I added on it some modiffications, thanks to Mr Luke Barousse the course owner you can get to the course via the following link:
+This project is based on an SQL course project by Mr. Luke Barousse, with some modifications of my own. Thanks to Mr. Barousse for the course. You can find it here:
 [Luke Barousse SQL Course](https://lukebarousse.com/sql).    
-#### Mr Barousse in this project course trays to answer the following questions problems 🔐  
-NOOTE ✏️: the role we focus on in this project is **Data Analyst**  
+#### In this course project, Mr. Barousse explores the following questions 🔐  
+NOTE ✏️: the role we focus on in this project is **Data Analyst**  
 1. What are the top paying jobs for my role?  
 2. What are the skills required for those top paying jobs?  
 3. What are the most in demand skills for my role?  
 4. What are the top paying skills for my role?  
 5. What are the optimal skills to learn for my role?  
-**Optimal**: means the highly demanded and highly payed.  
+**Optimal** means skills that are both highly demanded and highly paid.  
 # Tools I used
-To tackle this project and go deep into I've benifit from the use of  many tools 🛠️ such as:  
+To explore this project in depth, I benefited from several tools 🛠️, including:  
 - **SQL** as the main heart of this project realisation allowing us to query the database and to draw important insights.  
 - **Postgres** the chosen database management system open source and ideal for ou project handling.
 - **Visual Studio Code** as the bridge to executing the sql queries on the postgres database.  
@@ -22,11 +22,9 @@ To tackle this project and go deep into I've benifit from the use of  many tools
 - **Excel Charts & Power Query** they help clean and visualise some findings as charts.  
 - **ChatGPT** this AI module helped to analyse some of the SQL queries execution results.
 # The Analysis 
-Each query in this project is a practical solution to a question from the 5 question we've asked in the **Background** section related to the data analysis job market, here's how I've handeled them:  
-### 1. The Top Paying Data Analyst Jobs:  
-in this project , we've identefy the top 10 highest paying job postings,
-for the role of Data Analyst jobs remotly, 
-ignoring null values also we are joining the job_posting_fact table with the company_dim table to get the company name for each job posting.
+Each query in this project addresses one of the five questions listed in the **Background** section about the data analyst job market. Here's how I approached them:  
+### 1. The Top-Paying Data Analyst Jobs  
+In this section, I identify the 10 highest-paying remote Data Analyst job postings, exclude null average-salary values, and join `job_postings_fact` with `company_dim` to retrieve each company's name.
   
   
 ```SQL  
@@ -50,7 +48,7 @@ order by
 limit 10;     
 ```    
  
-### 2. Skills Required For Top Paying Data Analyst Jobs:    
+### 2. Skills Required for Top-Paying Data Analyst Jobs    
 this query is a continuation of the previous query, it will return
 the top 10 paying remot jobs for Data Analyst role .
 with the skills required for those jobs.
@@ -85,7 +83,7 @@ INNER JOIN skills_dim ON skills_job_dim.skill_id=skills_dim.skill_id
 order by 
     salary_year_avg DESC
 ```    
-#### Insights And Analysis:  
+#### Insights and Analysis  
 1. **Big Findings:**
 There is a very strong core skill hierarchy:
 **SQL → Python → Tableau → R → Excel/Pandas/Snowflake**  
@@ -106,12 +104,12 @@ rather than purely business/reporting skills.
 
 **you can see it clearly with the  chart visualisation below**  
 
-![**To see it clearly please view this chart visualisation**](/help%20book%20queries/01_skill_dominance.png)  
+![**To see it clearly please view this chart visualisation**](./help%20book%20queries/01_skill_dominance.png)  
 *this chart explain the domanance of a set of skills in 8 different job posting offer (CHATGPT as a source).*  
   
 
   
-## 3. The Most Demanded Skills For Data Analyst:  
+### 3. The Most Demanded Skills for Data Analysts  
 in this project we've used tow ways to get the top 5
 skills most required  for Data Analyst jobs
 that are remote based on the skills counting.  
@@ -165,7 +163,7 @@ order by
     skill_count DESC
 LIMIT 5;
 ```  
-#### Insights And Analysis:    
+#### Insights and Analysis    
 The table below is the query execution result
 that shows the most 5 highly demanded skils for **Data Analyst roles** based on the skill mention count from each **Data Analyst** job offering:  
 ## Most In-Demand Skills
@@ -178,11 +176,10 @@ that shows the most 5 highly demanded skils for **Data Analyst roles** based on 
 |    4 | Tableau    |       3,745 |
 |    5 | Power BI   |       2,609 |
   
-From the table above it's highly recommanded for a Data Analyst role applicant to learn this 5 skills : **SQL, EXCEL, PYTHON, TABLEAU and POWER BI**  
-giving the proirity to rank order  
-with the possiblity to learn only **TABLEAU** or **POWER BI** as they mostly serve to do the same tools. 
+Based on this table, applicants targeting Data Analyst roles could prioritize these five skills: **SQL, Excel, Python, Tableau, and Power BI**, following the demand ranking.  
+Tableau and Power BI overlap in their business-intelligence use cases, so a learner might choose one to start with depending on their goals. 
    
-### 4. The Top Pying skills For Data Analyst Jobs: 
+### 4. The Top-Paying Skills for Data Analyst Jobs 
 this query  will return the top 25 skills that have 
 the better paying chances for data analyst jobs.  
 returning the skill name and ordering the results by the skill average salary using inteer joining of skills_job_dim table with job_posting_fact table then with skills_dim table.  
@@ -212,17 +209,17 @@ order by
     avg_salary DESC
 limit 25;  
 ```
-#### Insights And Analysis:
+#### Insights and Analysis
 the following chart is the query execution result visualisation can better show case those 25 top paying skills for **Data Analys** roles:  
 
-![chart image](/01_top_25_highest_paying_skills.png)  
+![chart image](./01_top_25_highest_paying_skills.png)  
   
 *Source: CHATGPT*  
 ##### Key Insights From The Chart:    
 + Specialist skills can be associated with more technical roles. PySpark, Databricks, Kubernetes, and similar technologies may appear in roles involving distributed computing, infrastructure, or complex data pipelines. Those roles can have different salary profiles from general analytics roles.
 - For an intry level skill **Data Analyst** role it's highly recommended to go first with the most five demanded skills **(SQL,EXCEL,PYTHON,TABLEAU,POWER BI)** then when we want to swift gears into more paying roles we can follow with the 25 highly paying skills.  
   
-### 5. The Optimal Set Of Skills (High Demand And Pay).  
+### 5. The Optimal Set of Skills (High Demand and Pay)  
 this query project will be a continuation of the query 3 and 4 
 it's going to return the 25 optimal skills to learn , the gighly demanded and highly payed skills.  
 by inner joining skills_job_dim table with job_posting_fact table  then with the skills_dim table using some Aggragation functions as the *COUNT(skills)* to count the skill demand and the *AVG(salary)* to determine the skill pay.  
@@ -310,10 +307,10 @@ order by
     skill_avg DESC,
     skill_count DESC;
 ```  
-#### Insights And Analysis:  
+#### Insights and Analysis  
 The scatter chart image below is a visualisation discription of the queries execution result:  
   
-![scatter chart](/help%20book%20queries/skill%20demand%20and%20pay%20chart.png)  
+![scatter chart](./help%20book%20queries/skill%20demand%20and%20pay%20chart.png)  
 
 *NOOTE: I've made this results visualisation using Power Query and Excel built charts*  
   
@@ -321,19 +318,17 @@ The scatter chart image below is a visualisation discription of the queries exec
 
 - From the **query 3 (5 highly demanded skills)** list Three of the five most demanded skills appear in the **25 highly demanded and payed skills** list, and they're **Python, Tableau And Power BI** while *SQL and Excel* do not.
 That doesn't mean SQL and Excel are poorly paid in general. It means they did not qualify for this particular salary ranking.  
-- From the **query 4 (25 highly payed skills)** list, no skill is mentioned in the **25 highly demanded and payed skills** This does not mean the highest-paying skills are not in demand. It means they did not qualify for my particular optimal set based on the SQL condition where the **count of skills must be graeter than 10.**   
+- None of the skills in Query 4's top-25 highest-paying list appears in the **high-demand, high-pay** list. This does not mean those skills are never in demand; in the data, they did not meet the optimal-list condition of a skill count **greater than 10**.   
   
 # What I Learned:
-Through out this course projct jureney I had the chance to solve many real world data jobs questions problems,
-it helped me learn:
+Throughout this course-project journey, I worked through practical questions about the data job market. The project helped me learn:
 - **How to constract comlex queries** using CTE's and tables joining it allow me pull specified useful data accross diffrent tables.
 - **Data Aggregation** using GROUP BY to aggregate by unique values adding some of the aggregation functions like COUNT() and AVG() to do some mathimatical and stastical calculations.  
 - **Analitical Skills Building** turining my reald world data questions into practical SQL queries to pull fruithfull results and use some other tools to better read them.   
 - **Code Edditing & Collaboration Tools** using GIT, GITHUB and VS Code help to handle some basic Git commands to better build a solide reppo inside my Github. 
   
-# Conclusions
-Finally for me what matter most in this project reppo is not the findings results, but instead the learning processus, this was my first SQL project and my first github README showcasing.  
-and after all I can say that now I am ready to dive more into more real world problems, combining what I leaened here with other tools, continuanig my data analysis juerney.
+# Conclusion
+For me, the most important part of this project is not just the findings, but the learning process. This was my first SQL project and my first GitHub README showcase. I feel ready to explore more real-world problems, combine what I have learned with other tools, and continue my data-analysis journey.
 
 
 
