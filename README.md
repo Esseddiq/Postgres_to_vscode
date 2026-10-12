@@ -212,7 +212,7 @@ limit 25;
 #### Insights and Analysis
 the following chart is the query execution result visualisation can better show case those 25 top paying skills for **Data Analys** roles:  
 
-![chart image](./01_top_25_highest_paying_skills.png)  
+![chart image](./help%20book%20queries/01_top_25_highest_paying_skills.png)  
   
 *Source: CHATGPT*  
 ##### Key Insights From The Chart:    
